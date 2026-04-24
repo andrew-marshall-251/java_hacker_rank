@@ -8,6 +8,13 @@ public class Solution {
             return true;
         return false;
     }
+    
+    public static boolean isValidInt(int a) {
+        if (0 <= a && a <= 255)
+            return true;
+        return false;
+    }
+    
     public static boolean isValidIP(String ip_str) {
         // check for only valid chars
         for (char c: ip_str.toCharArray()){
@@ -25,14 +32,17 @@ public class Solution {
             if (byte_field.length() > 3) {
                 return false;
             }
+            if (!isValidInt(Integer.parseInt(byte_field))) {
+                return false;
+            }
         }
         return true;
     }
     
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN.
-	 * Print output to STDOUT.
-	 * Your class should be named Solution. */
+        Print output to STDOUT.
+        Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
 
         while (sc.hasNextLine()) {
