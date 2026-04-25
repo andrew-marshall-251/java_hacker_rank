@@ -37,35 +37,31 @@ public class Solution {
         return false;
     }
     
-    private static void    is_balanced(String s) {
+    private static boolean    is_balanced(String s) {
         Stack<Character> char_stack = new Stack<>();
         char        last_popped;
         for (char c: s.toCharArray()) {
             if (is_open(c)) {
                 char_stack.push(c);
             } else if (is_closed(c) && char_stack.empty()) {
-                System.out.println("false");
-                return ;
+                return false;
             } else if (is_closed(c) && !char_stack.empty()) {
                 last_popped = char_stack.pop();
                 if (!is_pair(last_popped, c)) {
-                    System.out.println("false");
-                    return ;
+                    return false;
                 }
             }
         }
         if (char_stack.empty()) {
-            System.out.println("true");
-        } else {
-            System.out.println("false");
+            return true;
         }
-        return ;
+        return false;
     }
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNextLine()) {
-            is_balanced(sc.nextLine());
+            System.out.println(is_balanced(sc.nextLine()));
         }
         sc.close();
     }
